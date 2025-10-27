@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@theme {
+    --opacity-2: 0.03;
+    --font-lexend: 'Lexend', sans-serif;
+}
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #F3E8FF 0%, #FBEFF3 50%, #E8F7FF 100%);
+    --lavender: #BFA2E6;
+    --pastel-pink: #F6C5D6;
+    --light-blue: #A8D8EA;
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --text: #1b1534;
+    --muted: #564b6a;
+    --glass-shadow: 0 8px 30px rgba(18, 18, 36, 0.08);
+    --radius: 14px;
+    --blur: 8px;
+    --nav-height: 72px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Lexend';
+    color: var(--text);
+    background: var(--bg-gradient);
+    scroll-behavior: smooth
+}
+
+a {
+    color: inherit
+}
+
+@keyframes floaty {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-10px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+.float-anim {
+    animation: floaty 3s ease-in-out infinite
+}
