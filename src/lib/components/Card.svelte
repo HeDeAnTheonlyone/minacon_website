@@ -14,18 +14,12 @@
     }
 
     .card {
-        background: var(--glass-bg);
+        background: var(--bg-glass);
         border-radius: var(--radius);
-        border: 1px solid var(--glass-border);
-        box-shadow: var(--glass-shadow);
+        border: 1px solid var(--border-glass);
+        box-shadow: var(--shadow-glass);
         padding: 35px;
         justify-items: center;
-    }
-
-    h2 {
-        margin-bottom: 10px;
-        font-size: 22px;
-        width: max-content;
     }
 </style>
 

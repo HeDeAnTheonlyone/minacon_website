@@ -1,49 +1,83 @@
-<script lang="ts">
-    import NavLogo from "./NavLogo.svelte";
+<script lang='ts'>
+	import { onMount } from 'svelte';
+    import NavLogo from './NavLogo.svelte';
+
+    const buttons = [
+        'Welcome',
+        'Countdown',
+        'About MinaCon',
+        'About Cerber',
+        'Testimonies',
+        'Gallery',
+        'Contact'
+    ];
+    let container: HTMLElement;
+
+    function gotoSection(index: number) {
+        container.style.setProperty('--section-index', index.toString());
+    }
+
+    onMount(() => {
+        container = document.querySelector('.smooth-scroll-snap') as HTMLElement;
+    });
 </script>
 
-<style>    
+<style>
+    @reference '../../styles/app.css';
+
     header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        height: var(--nav-height);
-        backdrop-filter: blur(var(--blur));
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 20px;
-        gap: 12px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.12));
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: var(--glass-shadow);
-        border-radius: 0 0 14px 14px;
+        box-shadow: var(--shadow-glass);
+        @apply
+            sticky
+            top-0
+            h-(--nav-height)
+            z-10
+            flex
+            px-10
+            mb-[-72px]
+            border-b
+            border-glass
+            gap-12
+            items-center
+            justify-between
+            backdrop-blur-sm
+        ;
     }
 
-    a {
-        padding: 8px 12px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 600;
-        color: var(--muted);
-        transition-duration: 300ms;
+    
+    button, span {
+        @apply
+        px-6
+        py-3
+        rounded-xl
+        font-semibold
+        duration-200
+        ;
+    }
+
+    span {
+        @apply
+            px-0
+            select-none
+        ;
     }
     
-    a:hover {
-        transform: translateY(-3px);
-        background: #f0e8fa;
+    button:hover {
+        @apply
+            translate-y-[-3px]
+            bg-[rgba(219,121,255,0.47)]
+        ;
     }
 </style>
 
-<header class="sticky top-0">
+<header class='sticky'>
     <NavLogo/>
-    <nav class="absolute flex justify-center w-full space-x-5">
-        <a href="#welcome">Welcome</a>
-        <a href="#countdown">Countdown</a>
-        <a href="#about">About MinaCon</a>
-        <a href="#cerber">About Cerber</a>
-        <a href="#testimonies">Testimonies</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
+    <nav class='flex justify-center w-full space-x-5'>
+        {#each buttons as button, index}
+            {#if index != 0}
+                <span>|</span>
+            {/if}
+            <button onclick={() => {gotoSection(index)}}>{button}</button>
+        {/each}
     </nav>
 </header>

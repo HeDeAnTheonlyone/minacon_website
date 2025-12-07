@@ -1,41 +1,58 @@
 @import 'tailwindcss';
 
 @theme {
-    --opacity-2: 0.03;
-    --font-lexend: 'Lexend', sans-serif;
-}
-
-:root {
-    --bg-gradient: linear-gradient(135deg, #F3E8FF 0%, #FBEFF3 50%, #E8F7FF 100%);
-    --lavender: #BFA2E6;
-    --pastel-pink: #F6C5D6;
-    --light-blue: #A8D8EA;
-    --glass-bg: rgba(255, 255, 255, 0.55);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --text: #1b1534;
-    --muted: #564b6a;
-    --glass-shadow: 0 8px 30px rgba(18, 18, 36, 0.08);
+    --color-gradient: linear-gradient(135deg, #F3E8FF 0%, #FBEFF3 50%, #E8F7FF 100%);
+    --color-lavender: #BFA2E6;
+    --color-pastel-pink: #F6C5D6;
+    --color-light-blue: #A8D8EA;
+    --color-text: #1b1534;
+    --color-muted: #564b6a;
+    --color-glass: rgba(255, 255, 255, 0.55);
+    --border-glass: rgba(255, 255, 255, 0.12);
+    --shadow-glass: 0 8px 30px rgba(18, 18, 36, 0.08);
     --radius: 14px;
     --blur: 8px;
     --nav-height: 72px;
+    --cloud-scale: 3.3;
 }
 
-* {
-    box-sizing: border-box
+@utility border-* {
+    border-color: --value(--border-*);
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Lexend';
-    color: var(--text);
-    background: var(--bg-gradient);
-    scroll-behavior: smooth
+    font-family: 'Nunito';
+    @apply
+        h-screen
+        overflow-hidden
+        scroll-smooth
+        border-b-gray-400
+        text-text
+    ;
 }
 
-a {
-    color: inherit
+section {
+    scroll-snap-align: start;
+    height: 100vh;
+    align-content: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    width: max-content;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+.section {
+    padding: 72px 20px;
+    max-width: 1100px;
+    margin: 0 auto
 }
 
 @keyframes floaty {
@@ -44,7 +61,7 @@ a {
     }
 
     50% {
-        transform: translateY(-10px)
+        transform: translateY(-20px)
     }
 
     100% {
@@ -53,5 +70,5 @@ a {
 }
 
 .float-anim {
-    animation: floaty 3s ease-in-out infinite
+    animation: floaty 3.5s ease-in-out infinite;
 }

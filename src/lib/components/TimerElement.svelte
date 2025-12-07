@@ -1,25 +1,32 @@
 <script lang="ts">
-    let { num, label } = $props();
+    let {
+        num,
+        label = "",
+    } = $props();
 </script>
 
 <style>
+    @reference "../../styles/app.css";
     div {
-        min-width: 90px;
-        padding: 14px;
-        border-radius: 12px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
-        border: 1px solid rgba(255, 255, 255, 0.06);
         justify-items: center;
+        @apply
+            py-14
+            md:px-5
+            sm:px-3
+            px-1
+        ;
     }
 
     .num {
         font-weight: 800;
-        font-size: 28px
+        font-size: 30px;
     }
 
     .label {
         font-size: 12px;
-        color: var(--muted)
+        @apply
+            text-muted
+        ;
     }
 </style>
 
