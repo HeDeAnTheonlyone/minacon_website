@@ -7,10 +7,15 @@
 </script>
 
 <style>
+    @reference '../../styles/app.css';
+
     .section {
-        padding: 72px 20px;
-        max-width: 1100px;
-        margin: 0 auto
+        @apply
+            max-w-3/5
+            w-full
+            px-5
+            py-[72px]
+        ;
     }
 
     .card {

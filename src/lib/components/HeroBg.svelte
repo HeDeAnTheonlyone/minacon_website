@@ -61,26 +61,28 @@
             bg-no-repeat
             bg-center
         ;
-    }
+    }    
 
     @keyframes sway {
         0% {
-            transform-origin: calc(100% * 0.81) calc(100% * 0.47);
+            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
             rotate: -10deg;
         }
         
         50% {
-            transform-origin: calc(100% * 0.81) calc(100% * 0.47);
+            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
             rotate: 5deg;
         }
         
         100% {
-            transform-origin: calc(100% * 0.81) calc(100% * 0.47);
+            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
             rotate: -10deg;
         }
     }
 
     .wind-sway {
+        --origin-x: 0.8;
+        --origin-y: 0.47;
         inset: 0;
         animation: sway 5s ease-in-out infinite;
     }

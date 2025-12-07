@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+
+/* <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
+rel="stylesheet"> */
 
 @theme {
     --color-gradient: linear-gradient(135deg, #F3E8FF 0%, #FBEFF3 50%, #E8F7FF 100%);
@@ -20,9 +24,8 @@
     border-color: --value(--border-*);
 }
 
-html,
-body {
-    font-family: 'Nunito';
+html, body {
+    font-family: 'Nunito', system-ui, sans-serif;
     @apply
         h-screen
         overflow-hidden
@@ -32,27 +35,28 @@ body {
     ;
 }
 
+
 section {
-    scroll-snap-align: start;
-    height: 100vh;
-    align-content: center;
+    @apply
+        relative
+        h-screen
+        overflow-clip
+        content-center
+        place-items-center
+    ;
 }
 
 h2 {
-    margin-bottom: 10px;
-    font-size: 22px;
-    width: max-content;
-    font-weight: 700;
+    @apply
+        mb-2.5
+        w-max
+        text-[22px]
+        font-bold
+    ;
 }
 
 h3 {
     font-weight: 700;
-}
-
-.section {
-    padding: 72px 20px;
-    max-width: 1100px;
-    margin: 0 auto
 }
 
 @keyframes floaty {

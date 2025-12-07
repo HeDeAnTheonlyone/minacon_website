@@ -1,25 +1,6 @@
 <script lang='ts'>
-	import { onMount } from 'svelte';
     import NavLogo from './NavLogo.svelte';
-
-    const buttons = [
-        'Welcome',
-        'Countdown',
-        'About MinaCon',
-        'About Cerber',
-        'Testimonies',
-        'Gallery',
-        'Contact'
-    ];
-    let container: HTMLElement;
-
-    function gotoSection(index: number) {
-        container.style.setProperty('--section-index', index.toString());
-    }
-
-    onMount(() => {
-        container = document.querySelector('.smooth-scroll-snap') as HTMLElement;
-    });
+    import { gotoSection, Sections } from '$lib/smooth_snap_scroll';
 </script>
 
 <style>
@@ -43,14 +24,15 @@
             backdrop-blur-sm
         ;
     }
-
     
     button, span {
         @apply
         px-6
         py-3
         rounded-xl
-        font-semibold
+        text-text
+        font-bold
+        text-lg
         duration-200
         ;
     }
@@ -65,7 +47,7 @@
     button:hover {
         @apply
             translate-y-[-3px]
-            bg-[rgba(219,121,255,0.47)]
+            bg-[#ffffff88]
         ;
     }
 </style>
@@ -73,11 +55,11 @@
 <header class='sticky'>
     <NavLogo/>
     <nav class='flex justify-center w-full space-x-5'>
-        {#each buttons as button, index}
+        {#each Sections as button, index}
             {#if index != 0}
                 <span>|</span>
             {/if}
-            <button onclick={() => {gotoSection(index)}}>{button}</button>
+            <button onclick={() => gotoSection(index)}>{button}</button>
         {/each}
     </nav>
 </header>

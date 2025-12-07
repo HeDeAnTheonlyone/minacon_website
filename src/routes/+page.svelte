@@ -3,57 +3,15 @@
 	import Gallery from "$lib/components/Gallery.svelte";
 	import Hero from "$lib/components/Hero.svelte";
 	import Testimony from "$lib/components/Testimony.svelte";
-	import Timer from "$lib/components/Timer.svelte";
+	import TimerCard from "$lib/components/TimerCard.svelte";
 	import { onMount } from "svelte";
+    import { initSmoothSnapScrolling } from "$lib/smooth_snap_scroll";
 
-    // Smooth Snap Scrolling
-    let index: number = 0;
-    let last_index: number;
-    let locked: boolean = false;
-    let container: HTMLElement;
-
-    onMount(() => {
-        last_index = document.querySelectorAll("section").length - 1;
-        container = document.querySelector('.smooth-scroll-snap') as HTMLElement;
-        
-        addEventListener("wheel", e => {
-            if (locked) return;
-
-            index += Math.sign(e.deltaY);
-            index = Math.max(0, Math.min(index, last_index));
-            locked = true;
-
-            container.style.setProperty('--section-index', index.toString());
-
-            setTimeout(() => locked = false, 500);
-        }, { passive: false });
-    });
-
+    onMount(() => initSmoothSnapScrolling());
 </script>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>MinaCon — By Minawan, for Minawan</title>
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
-rel="stylesheet">
 
 <style>
     @reference "../styles/app.css";
-
-    .hero {
-        @apply
-            relative
-            grid
-            min-h-[520px]
-            place-items-center
-        ;
-    }
-
-    .muted {
-        color: var(--color-muted)
-    }
 
     .cols-2 {
         display: grid;
@@ -77,13 +35,6 @@ rel="stylesheet">
         align-items: center
     }
 
-    footer {
-        padding: 28px 20px;
-        text-align: center;
-        color: var(--color-muted);
-        font-size: 13px
-    }
-
     .smooth-scroll-snap {
         --section-index: 0;
         transform: translateY(calc(-100vh * var(--section-index)));
@@ -93,18 +44,15 @@ rel="stylesheet">
 
 <!-- ================================ -->
 
-<main class="smooth-scroll-snap">
+<main class="h-screen smooth-scroll-snap">
     <section id="welcome" class="hero">
         <Hero/>
     </section>
     
     <section id="countdown">
-        <Card heading="Countdown to the Next MinaCon" extra_classes="float-anim">
-            <p class="muted">Mark your calendars — next MinaCon: <strong>July 27, 2026</strong></p>
-            <Timer/>
-        </Card>
+        <TimerCard/>
     </section>
-        
+    
     <section id="about">
         <Card heading="About MinaCon">
             <div class="card cols-2" style="padding:28px;">
@@ -115,7 +63,7 @@ rel="stylesheet">
                         with love by her fans.</em></p>
                 </div>
                 <div>
-                    <h3 class="">Quick Info</h3>
+                    <h3>Quick Info</h3>
                     <ul style="margin:0;padding-left:18px;color:var(--color-muted)">
                         <li>Private, invite-based event</li>
                         <li>Rotating location in Europe</li>
@@ -159,9 +107,7 @@ rel="stylesheet">
                 </div>
             </div>
         </Card>
+        <div class="justify-self-center">© MinaCon · Built with love by Minawan</div>
     </section>
 </main>
 
-<footer>
-<div>© MinaCon · Built with love by Minawan</div>
-</footer>

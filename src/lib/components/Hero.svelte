@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import HeroBg from './HeroBg.svelte';
+	import { gotoSection } from '$lib/smooth_snap_scroll';
 
     let show_arrow = $state(true);
 
@@ -17,7 +17,7 @@
 <style>
     @reference "../../styles/app.css";
 
-    .hero-card {
+    .card {
         box-shadow: var(--shadow-glass);
         text-align: center;
         @apply
@@ -35,11 +35,10 @@
     }
 
     h1 {
-        font-family: 'Poppins', 'Nunito';
-        font-size: clamp(28px, 4.5vw, 44px);
+        font-size: clamp(28px, 4.5vw, 52px);
         letter-spacing: -0.02em;
         @apply
-            font-extrabold
+            font-bold
             mb-8
         ;
     }
@@ -63,11 +62,11 @@
 
 <HeroBg/>
 
-<div class="hero-card" role="region" aria-labelledby="welcomeTitle">
-    <h1 id="welcomeTitle">Welcome to MinaCon</h1>
+<div class="card" aria-labelledby="welcomeTitle">
+    <h1>Welcome to MinaCon</h1>
     <p class="lead">By Minawan, for Minawan — annual fan meetup celebrating CerberVT and the Minawan community.</p>
     <div style="margin-top:18px">
-        <a href="#countdown" class="btn hover:scale-110 duration-300">Next MinaCon</a>
+        <button class="hover:scale-110 duration-200" onclick={() => gotoSection("Countdown")}>Next MinaCon</button>
     </div>
 </div>
 
