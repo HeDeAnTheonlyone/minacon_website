@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
-/* <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
-rel="stylesheet"> */
-
 @theme {
     --color-gradient: linear-gradient(135deg, #F3E8FF 0%, #FBEFF3 50%, #E8F7FF 100%);
     --color-lavender: #BFA2E6;
@@ -17,7 +14,7 @@ rel="stylesheet"> */
     --radius: 14px;
     --blur: 8px;
     --nav-height: 72px;
-    --cloud-scale: 3.3;
+    --cloud-scale: 4.3;
 }
 
 @utility border-* {
@@ -57,6 +54,10 @@ h2 {
 
 h3 {
     font-weight: 700;
+}
+
+p {
+    font-size: clamp(14px, 2.1vw, 18px);
 }
 
 @keyframes floaty {

@@ -30,7 +30,8 @@
         background-repeat: repeat-x;
         transform-origin: bottom center;
         @apply
-            w-[1000%]
+            w-[300%]
+            /* h-[100%] */
             h-[324px]
             origin-bottom
         ;
@@ -89,7 +90,7 @@
 </style>
 
 <div class="sky"></div>
-<div class="w-full h-screen overflow-clip">
+<div class="w-full h-screen overflow-hide">
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>

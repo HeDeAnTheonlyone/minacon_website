@@ -3,7 +3,7 @@
 	import Gallery from "$lib/components/Gallery.svelte";
 	import Hero from "$lib/components/Hero.svelte";
 	import Testimony from "$lib/components/Testimony.svelte";
-	import TimerCard from "$lib/components/TimerCard.svelte";
+	import CountDown from "$lib/components/CountDown.svelte";
 	import { onMount } from "svelte";
     import { initSmoothSnapScrolling } from "$lib/smooth_snap_scroll";
 
@@ -50,7 +50,7 @@
     </section>
     
     <section id="countdown">
-        <TimerCard/>
+        <CountDown/>
     </section>
     
     <section id="about">

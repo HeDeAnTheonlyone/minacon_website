@@ -44,7 +44,6 @@
     }
 
     p.lead {
-        font-size: clamp(14px, 2.1vw, 18px);
         @apply
             text-muted
         ;

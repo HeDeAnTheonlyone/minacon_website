@@ -11,21 +11,31 @@
 
     .section {
         @apply
-            max-w-3/5
             w-full
             px-5
             py-[72px]
+            justify-items-center
         ;
     }
 
     .card {
-        background: var(--bg-glass);
-        border-radius: var(--radius);
-        border: 1px solid var(--border-glass);
         box-shadow: var(--shadow-glass);
-        padding: 35px;
-        justify-items: center;
+        @apply
+            justify-items-center
+            relative
+            z-3
+            max-w-2/5
+            w-full
+            mx-6
+            p-10
+            rounded-[18px]
+            bg-glass
+            backdrop-blur-sm
+            border-glass
+            border-b-2
+        ;
     }
+
 </style>
 
 <div class="section">

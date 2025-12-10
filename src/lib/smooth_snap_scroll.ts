@@ -57,6 +57,7 @@ function onKeyDown(e: KeyboardEvent) {
     gotoSection(index);
 }
 
+// Use section index or name 
 export function gotoSection(index: number | string) {
     locked = true;
     setTimeout(() => locked = false, 300);

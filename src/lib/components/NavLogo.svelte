@@ -1,3 +1,9 @@
+<style>
+    p {
+        font-size: 14px;
+    }
+</style>
+
 <div class="flex space-x-3">
         <img src="/logo.png" alt="Logo" class="h-15 rounded-xs"/>
         <div>
