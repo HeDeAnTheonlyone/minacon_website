@@ -11,20 +11,31 @@
         @apply
             sticky
             top-0
+            w-full
             h-(--nav-height)
             z-10
             flex
             px-10
-            mb-[-72px]
+            -mb-18
             border-b
             border-glass
             gap-12
             items-center
             justify-between
             backdrop-blur-sm
+            /* bg-glass */
         ;
     }
     
+    nav {
+        @apply
+            flex
+            justify-center
+            w-full
+            space-x-5
+        ;
+    }
+
     button, span {
         @apply
         px-6
@@ -52,9 +63,10 @@
     }
 </style>
 
-<header class='sticky'>
+<!-- <div class="w-full flex"> -->
+<header>
     <NavLogo/>
-    <nav class='flex justify-center w-full space-x-5'>
+    <nav>
         {#each Sections as button, index}
             {#if index != 0}
                 <span>|</span>
@@ -63,3 +75,4 @@
         {/each}
     </nav>
 </header>
+<!-- </div> -->

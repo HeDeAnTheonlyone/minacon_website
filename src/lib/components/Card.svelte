@@ -1,7 +1,6 @@
 <script lang="ts">
     let {
         children,
-        heading = "",
         extra_classes = "",
     } = $props();
 </script>
@@ -12,9 +11,11 @@
     .section {
         @apply
             w-full
+            h-screen
             px-5
-            py-[72px]
             justify-items-center
+            content-center
+            z-1
         ;
     }
 
@@ -40,7 +41,6 @@
 
 <div class="section">
     <div class="card {extra_classes}">
-        <h2>{heading}</h2>
         {@render children?.()}
     </div>
 </div>

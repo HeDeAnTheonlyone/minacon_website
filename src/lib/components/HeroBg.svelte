@@ -7,58 +7,69 @@
     }
 
     .sky {
-        inset: 0;
         background: linear-gradient(180deg, #607ddc, #80a1f2);
+        @apply
+            inset-0
+            -z-10
+        ;
     }
 
     @keyframes side-scroll {
         0% {
             transform:
                 translateX(0px)
-                scale(var(--cloud-scale));
+                scale(var(--cloud-scale))
+            ;
         }
 
         100% {
             transform:
-                translateX(calc(1728px * var(--cloud-scale)))
-                scale(var(--cloud-scale));
+                translateX(calc(var(--cloud-width) * var(--cloud-scale)))
+                scale(var(--cloud-scale))
+            ;
         }
     }
 
     .cloud {
-        bottom: 0;
+        --cloud-width: 576px;
+        --cloud-height: 324px;
+        --cloud-scale: max(calc( 115vh / var(--cloud-height)), 1);
         background-repeat: repeat-x;
-        transform-origin: bottom center;
+        background-position: bottom center;
+        transform-origin: bottom;
+        transform: scale(var(--cloud-width) * 1);
         @apply
-            w-[300%]
-            /* h-[100%] */
-            h-[324px]
-            origin-bottom
+            absolute
+            bottom-0
+            left-[-200vw]
+            w-[300vw]
+            h-screen
         ;
     }
 
     .cloud-1 {
+        z-index: -3;
         background-image: url('cloud_1.png');
-        animation: side-scroll 240s linear infinite;
+        animation: side-scroll 150s linear infinite;
     } 
     .cloud-2 {
+        z-index: -2;
         background-image: url('cloud_2.png');
-        animation: side-scroll 170s linear infinite;
+        animation: side-scroll 90s linear infinite;
     }
 
     .cloud-3 {
+        z-index: -1;
         background-image: url('cloud_3.png');
-        animation: side-scroll 120s linear infinite;
+        animation: side-scroll 50s linear infinite;
     }
 
     .title {
-        transform:
-            translateY(30px)
-            scale(0.9);
-        background-image: url('title.png');
+        transform: translateY(30px);
         background-size: contain;
         @apply
-            inset-0
+            absolute
+            inset-15
             bg-no-repeat
             bg-center
         ;
@@ -84,19 +95,21 @@
     .wind-sway {
         --origin-x: 0.8;
         --origin-y: 0.47;
+        position: absolute;
         inset: 0;
         animation: sway 5s ease-in-out infinite;
     }
 </style>
 
-<div class="sky"></div>
-<div class="w-full h-screen overflow-hide">
+//BUG NUMBER SWAY BROKEN on non 16/9 ratios
+
+<div class="sky">
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>
 </div>
-<div class="title"></div>
-<div class="overflow-clip inset-0">
+<div class="title" style="background-image: url('title.png');"></div>s
+<div class="inset-0">
     <div class="wind-sway">
         <div class="title" style="background-image: url('6.png');"></div>
     </div>

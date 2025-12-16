@@ -1,0 +1,131 @@
+
+@keyframes letter {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    15% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(20vh);
+    }
+
+    32% {
+        visibility: hidden;
+    }
+
+    100% {
+        visibility: hidden;
+        transform: translateY(20vh);
+    }
+}
+
+@keyframes env-movement {
+    0% {
+        transform: translateY(100vh);
+    }
+
+    10% {
+        transform: translateY(0);
+    }
+
+    35% {
+        transform: translateX(0);
+    }
+
+    42% {
+        transform: translateX(-100vw);
+    }
+
+    100% {
+        transform: translateX(-100vw);
+    }
+}
+
+@keyframes env-open {
+    0% {
+        opacity: 100%;
+    }
+
+    29.5% {
+        opacity: 100%;
+    }
+
+    32% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+
+@keyframes env-closed {
+    0% {
+        opacity: 0%;
+    }
+
+    29.5% {
+        opacity: 0%;
+    }
+
+    32% {
+        opacity: 100%;
+    }
+}
+
+@keyframes paper-plane-y {
+    45% {
+        transform: translateY(15vh);
+    }
+
+    70% {
+        transform: translateY(-20vh);
+    }
+
+    100% {
+        transform: translateY(20vh);
+    }
+}
+
+@keyframes paper-plane-x {
+    0% {
+        transform: translateX(-60vw);
+    }
+
+    45% {
+        transform: translateX(-60vw);
+    }
+
+    75% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(60vw);
+    }
+}
+
+@keyframes paper-plane-rotation {
+    40% {
+        rotate: 0deg;
+    }
+
+    65% {
+        rotate: -20deg;
+    }
+
+    75% {
+        rotate: 0deg;
+    }
+
+    90% {
+        rotate: 20deg;
+    }
+}

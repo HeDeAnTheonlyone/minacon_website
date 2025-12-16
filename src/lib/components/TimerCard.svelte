@@ -4,7 +4,8 @@
 
 </script>
 
-<Card heading="Countdown to the Next MinaCon" extra_classes="float-anim">
+<Card>
+    <h2>Countdown to the Next MinaCon</h2>
     <p class="muted">Mark your calendars — next MinaCon: <strong>July 27, 2026</strong></p>
     <Timer/>
 </Card>

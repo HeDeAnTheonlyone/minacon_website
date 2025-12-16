@@ -14,7 +14,6 @@
     --radius: 14px;
     --blur: 8px;
     --nav-height: 72px;
-    --cloud-scale: 4.3;
 }
 
 @utility border-* {
@@ -32,13 +31,18 @@ html, body {
     ;
 }
 
+main {
+    @apply
+        absolute
+        h-screen
+    ;
+}
 
 section {
     @apply
         relative
         h-screen
         overflow-clip
-        content-center
         place-items-center
     ;
 }
@@ -58,22 +62,4 @@ h3 {
 
 p {
     font-size: clamp(14px, 2.1vw, 18px);
-}
-
-@keyframes floaty {
-    0% {
-        transform: translateY(0)
-    }
-
-    50% {
-        transform: translateY(-20px)
-    }
-
-    100% {
-        transform: translateY(0)
-    }
-}
-
-.float-anim {
-    animation: floaty 3.5s ease-in-out infinite;
 }

@@ -60,12 +60,13 @@
 </style>
 
 <HeroBg/>
-
-<div class="card" aria-labelledby="welcomeTitle">
-    <h1>Welcome to MinaCon</h1>
-    <p class="lead">By Minawan, for Minawan — annual fan meetup celebrating CerberVT and the Minawan community.</p>
-    <div style="margin-top:18px">
-        <button class="hover:scale-110 duration-200" onclick={() => gotoSection("Countdown")}>Next MinaCon</button>
+<div class="h-full content-center justify-items-center">
+    <div class="card" aria-labelledby="welcomeTitle">
+        <h1>Welcome to MinaCon</h1>
+        <p class="lead">By Minawan, for Minawan — annual fan meetup celebrating CerberVT and the Minawan community.</p>
+        <div style="margin-top:18px">
+            <button class=" underline hover:scale-110 duration-200" onclick={() => gotoSection("Countdown")}>Next MinaCon</button>
+        </div>
     </div>
 </div>
 

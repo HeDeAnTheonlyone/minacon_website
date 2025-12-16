@@ -1,10 +1,15 @@
 
-let index: number = 0;
 let last_index: number;
 let locked: boolean = false;
 let container: HTMLElement;
 
-export const Sections = [
+let index: number = 0;
+function setIndex(i: number) {
+    index = i;
+    sessionStorage.setItem("index", index.toString());
+}
+
+export const Sections: string[] = [
     'Welcome',
     'Countdown',
     'About MinaCon',
@@ -14,9 +19,17 @@ export const Sections = [
     'Contact'
 ];
 
-export function initSmoothSnapScrolling() {
+function initSmoothSnapScrolling() {
     last_index = document.querySelectorAll(".smooth-scroll-snap > section").length - 1;
     container = document.querySelector('.smooth-scroll-snap') as HTMLElement;
+    
+    const i: string | null = sessionStorage.getItem("index");
+    if (i === null) {
+        sessionStorage.setItem("index", index.toString());
+    }
+    else index = parseInt(i);
+
+    gotoSection(index);
 
     addEventListener("wheel", onScroll, { passive: false });
     addEventListener("keydown", onKeyDown, { passive: false });
@@ -37,7 +50,7 @@ function onScroll(e: WheelEvent) {
     if (!allowScroll(e)) return;
 
     index += Math.sign(e.deltaY);
-    index = Math.max(0, Math.min(index, last_index));
+    setIndex(Math.max(0, Math.min(index, last_index)));
     gotoSection(index);    
 }
 
@@ -53,23 +66,30 @@ function onKeyDown(e: KeyboardEvent) {
             break;
     }
 
-    index = Math.max(0, Math.min(index, last_index));
+    setIndex(Math.max(0, Math.min(index, last_index)));
     gotoSection(index);
 }
 
 // Use section index or name 
-export function gotoSection(index: number | string) {
+function gotoSection(section: number | string) {
     locked = true;
     setTimeout(() => locked = false, 300);
 
-    switch (typeof index) {
+    let i: number;
+
+    switch (typeof section) {
         case 'number':
-            container.style.setProperty('--section-index', index.toString());
+            i = Math.max(0, Math.min(section, Sections.length - 1));
             break;
         case 'string': {
-            const i: number = Math.max(0, Sections.indexOf(index));
-            container.style.setProperty('--section-index', i.toString());
+            i = Math.max(0, Sections.indexOf(section));
             break;
         }
     }
+
+    if (index != i) setIndex(i);
+
+    container.style.setProperty('--section-index', index.toString());
 }
+
+export { initSmoothSnapScrolling, gotoSection}
