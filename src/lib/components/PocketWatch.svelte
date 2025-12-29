@@ -16,7 +16,7 @@
         hour_rot = start_time;
         minute_rot = start_time * 60 % 360;
         
-        moveClockhands();
+        setInterval(moveClockhands, 300);
     });
 
     function moveClockhands() {
@@ -24,15 +24,12 @@
 
         minutes.style.setProperty('--minute-rot', (minute_rot + minute_offset).toString() + "deg")
         hours.style.setProperty('--hour-rot', (hour_rot + hour_offset).toString() + "deg")
-
-        setTimeout(() => moveClockhands(), 300);
     }
 
     function updateRotation() {
         minute_rot = (minute_rot + 6) % 360;
         hour_rot = (hour_rot + 0.1) % 360;
     }
-
 </script>
 
 <style>

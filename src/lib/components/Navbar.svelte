@@ -57,7 +57,7 @@
     
     button:hover {
         @apply
-            translate-y-[-3px]
+            -translate-y-0.75
             bg-[#ffffff88]
         ;
     }

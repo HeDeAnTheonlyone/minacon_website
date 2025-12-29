@@ -4,11 +4,7 @@
         transform: translateY(-100vh);
     }
 
-    15% {
-        transform: translateY(0);
-    }
-
-    25% {
+    15%, 25% {
         transform: translateY(0);
     }
 
@@ -31,47 +27,27 @@
         transform: translateY(100vh);
     }
 
-    10% {
+    10%, 35% {
         transform: translateY(0);
     }
 
-    35% {
-        transform: translateX(0);
-    }
-
-    42% {
-        transform: translateX(-100vw);
-    }
-
-    100% {
+    42%, 100% {
         transform: translateX(-100vw);
     }
 }
 
 @keyframes env-open {
-    0% {
+    0%, 29.5%{
         opacity: 100%;
     }
 
-    29.5% {
-        opacity: 100%;
-    }
-
-    32% {
-        opacity: 0%;
-    }
-
-    100% {
+    32%, 100% {
         opacity: 0%;
     }
 }
 
 @keyframes env-closed {
-    0% {
-        opacity: 0%;
-    }
-
-    29.5% {
+    0%, 29.5% {
         opacity: 0%;
     }
 
@@ -96,11 +72,11 @@
 
 @keyframes paper-plane-x {
     0% {
-        transform: translateX(-60vw);
+        transform: translateX(-100vw);
     }
 
     45% {
-        transform: translateX(-60vw);
+        transform: translateX(-100vw);
     }
 
     75% {
@@ -108,7 +84,7 @@
     }
 
     100% {
-        transform: translateX(60vw);
+        transform: translateX(100vw);
     }
 }
 
@@ -128,4 +104,37 @@
     90% {
         rotate: 20deg;
     }
+}
+
+.letter {
+    animation: 12s ease-in-out infinite letter;
+}
+
+.envelope {
+    animation:
+        12s ease-in-out infinite env-movement;
+}
+
+.flap-up {
+    animation:
+        12s ease-in-out infinite env-movement,
+        12s ease-in-out infinite env-open;
+}
+
+.flap-down {
+    animation:
+        12s ease-in-out infinite env-movement,
+        12s ease-in-out infinite env-closed;
+}
+
+.paper-plane-x {
+    animation: 12s linear infinite paper-plane-x;
+}
+
+.paper-plane-y {
+    animation: 12s cubic-bezier(0.697, 0.354, 0.479, 0.827) infinite paper-plane-y;
+}
+
+.paper-plane-rotation {
+    animation: 12s ease-in-out infinite paper-plane-rotation;
 }

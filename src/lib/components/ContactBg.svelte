@@ -1,5 +1,5 @@
 <style>
-    @import "../../styles/contact_bg_keyframess.css";
+    @import "../../styles/contact_bg_anim.css";
     @reference "../../styles/app.css";
 
     div {
@@ -10,8 +10,7 @@
         background-size: auto 90%;
         @apply
             absolute
-            w-full
-            h-screen
+            size-full
             bg-center
             bg-no-repeat
         ;
@@ -21,46 +20,16 @@
         clip-path: inset(0 0 20vh 0);
         @apply
             absolute
-            w-full
-            h-screen
+            size-full
         ;
     }
 
-    .letter {
-        animation:10s ease-in-out infinite letter;
+    .paper-plane {
+        @apply
+            bg-contain
+            inset-20
+        ;
     }
-
-    .envelope {
-        animation:
-            10s ease-in-out infinite env-movement;
-        }
-        
-    .flap-up {
-        animation:
-            10s ease-in-out infinite env-movement,
-            10s ease-in-out infinite env-open;
-        }
-        
-    .flap-down {
-        animation:
-            10s ease-in-out infinite env-movement,
-            10s ease-in-out infinite env-closed;
-    }
-
-    .paper-plane-x {
-        animation:
-            10s linear infinite paper-plane-x;
-    }
-
-    .paper-plane-y {
-        animation: 10s cubic-bezier(0.697, 0.354, 0.479, 0.827) infinite paper-plane-y;
-    }
-
-    .paper-plane-rotation {
-        background-size: auto 50%;
-        animation: 10s ease-in-out infinite paper-plane-rotation;
-    }
-
 </style>
 
 <div class="absolute inset-0 bg-[#cfb2d8] -z-4"></div>
@@ -73,8 +42,8 @@
     <div class="bg-elem letter" style="background-image: url('letter.png')"></div>
 </div>
 
-<div class="bg-elem paper-plane-y">
-    <div class="bg-elem paper-plane-x">
+<div class="size-full paper-plane-y">
+    <div class="size-full paper-plane-x">
         <div class="bg-elem paper-plane-rotation" style="background-image: url('paper_plane.png')"></div>
     </div>
 </div>

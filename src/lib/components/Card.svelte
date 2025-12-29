@@ -10,8 +10,7 @@
 
     .section {
         @apply
-            w-full
-            h-screen
+            size-full
             px-5
             justify-items-center
             content-center
@@ -25,10 +24,10 @@
             justify-items-center
             relative
             z-3
-            max-w-2/5
+            max-w-3/5
             w-full
             mx-6
-            p-10
+            p-12
             rounded-[18px]
             bg-glass
             backdrop-blur-sm

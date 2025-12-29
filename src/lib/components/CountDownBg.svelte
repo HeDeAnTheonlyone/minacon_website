@@ -13,14 +13,14 @@
     .wall {
         background: linear-gradient(90deg, #4b2417, #69311f, #69311f, #69311f, #4b2417);
         @apply
-            inset-0
+            size-full
         ;
     }
 
     .frame {
         background-image: url('gold_frame.webp');
         @apply
-            inset-0
+            size-full
         ;
     }
 
@@ -55,7 +55,6 @@
         @apply
         relative
         bottom-10
-        w-full
         h-screen
         bg-center
         bg-no-repeat

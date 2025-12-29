@@ -31,8 +31,8 @@ function initSmoothSnapScrolling() {
 
     gotoSection(index);
 
-    addEventListener("wheel", onScroll, { passive: false });
-    addEventListener("keydown", onKeyDown, { passive: false });
+    addEventListener("wheel", onScroll, { passive: true });
+    addEventListener("keydown", onKeyDown, { passive: true });
 };
 
 function allowScroll(e: WheelEvent | KeyboardEvent): boolean {

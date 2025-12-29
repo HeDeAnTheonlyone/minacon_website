@@ -1,3 +1,46 @@
+<script lang="ts">
+	import { onDestroy, onMount } from "svelte";
+
+    let six: HTMLDivElement;
+    let ro: ResizeObserver;
+
+    const img_width: number = 192;
+    const img_height: number = 110;
+    const origin_x: number = 0.78;
+    const origin_y: number = 0.43;
+
+    function updateOrigin() {
+        if (!six) return;
+
+        const rect = six.getBoundingClientRect();
+
+        const scale = Math.min(rect.width / img_width, rect.height / img_height);
+        const scaled_width = img_width * scale;
+        const scaled_height = img_height * scale;
+
+        const offset_x = (rect.width - scaled_width) / 2;
+        const offset_y = (rect.height - scaled_height) / 2;
+
+        const ox = offset_x + scaled_width * origin_x;
+        const oy = offset_y + scaled_height * origin_y;
+
+        // console.log(`scale: ${scale}\nox: ${ox}\noy: ${oy}\ncw: ${rect.width}\nch: ${rect.height}\noff x: ${offset_x}\noff y: ${offset_y}`);
+
+        six.style.transformOrigin = `${ox}px ${oy}px`;
+    }
+
+    onMount(() => {
+        ro = new ResizeObserver(updateOrigin);
+        ro.observe(six);
+
+        updateOrigin();
+    });
+
+    onDestroy(() => {
+        ro?.disconnect();
+    });
+</script>
+
 <style>
     @reference "../../styles/app.css";
 
@@ -64,54 +107,43 @@
         animation: side-scroll 50s linear infinite;
     }
 
-    .title {
-        transform: translateY(30px);
-        background-size: contain;
+    .title-anchor {
         @apply
-            absolute
-            inset-15
+            size-full
+            place-items-center
+        ;
+    }
+
+    .title {
+        transform: translateY(100px);
+        @apply
+            aspect-video
+            size-[80%]
             bg-no-repeat
             bg-center
+            bg-contain
         ;
-    }    
-
-    @keyframes sway {
-        0% {
-            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
-            rotate: -10deg;
-        }
-        
-        50% {
-            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
-            rotate: 5deg;
-        }
-        
-        100% {
-            transform-origin: calc(100% * var(--origin-x)) calc(100% * var(--origin-y));
-            rotate: -10deg;
-        }
     }
 
-    .wind-sway {
-        --origin-x: 0.8;
-        --origin-y: 0.47;
-        position: absolute;
-        inset: 0;
+    .sway {
         animation: sway 5s ease-in-out infinite;
     }
-</style>
 
-//BUG NUMBER SWAY BROKEN on non 16/9 ratios
+    @keyframes sway {
+        0% { rotate: -10deg; }
+        50% { rotate: 5deg; }
+        100% { rotate: -10deg; }
+    }
+</style>
 
 <div class="sky">
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>
 </div>
-<div class="title" style="background-image: url('title.png');"></div>s
-<div class="inset-0">
-    <div class="wind-sway">
-        <div class="title" style="background-image: url('6.png');"></div>
-    </div>
+
+<div class="title-anchor">
+    <div class="title" style="background-image: url('title.png');"></div>
+    <div class="title sway" bind:this={six} style="background-image: url('6.png');"></div>
+    <div class="title static" style="background-image: url('screw.png');"></div>
 </div>
-<div class="title" style="background-image: url('screw.png');"></div>

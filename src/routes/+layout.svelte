@@ -7,8 +7,9 @@
 
 <svelte:head>
 	<title>MinaCon 2026 — By Minawan, for Minawan</title>
-	<link rel="icon" href="/favicon.png" />
+	<link rel="icon" href="favicon.png" />
 </svelte:head>
+
 <div class="relative">
 	<Navbar/>
 	{@render children?.()}
