@@ -116,12 +116,11 @@ function gotoSection(section: number | string) {
  * Correction function to move the screen to the position of the focused element to prevent out of view focus.
  */
 function correctSectionIndex(node: HTMLElement, i: number) {
-    const handler = () => gotoSection(i);
-    node.addEventListener("focusin", handler, { passive: true });
+    node.addEventListener("focusin", () => gotoSection(i), { passive: true });
 
     return {
         destroy() {
-            node.removeEventListener("focusin", handler);
+            node.removeEventListener("focusin", () => gotoSection(i));
         }
     };
 }

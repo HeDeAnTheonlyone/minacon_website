@@ -35,12 +35,10 @@
         </p>
     </div>
     <div class="flex">
-            <p>
-                More info:
-                <a href="https://virtualyoutuber.fandom.com/wiki/CerberVT" target="_blank" rel="external">CerberVT</a>
-                <span class="mx-3">|</span>
-                Wiki:
-                <a href="https://www.twitch.tv/cerbervt" target="_blank" rel="external">Twitch Channel</a>
-            </p>
+        <p>
+            More info: <a href="https://www.twitch.tv/cerbervt" target="_blank" rel="external">Twitch Channel</a>
+            <span class="mx-3">|</span>
+            Wiki: <a href="https://virtualyoutuber.fandom.com/wiki/CerberVT" target="_blank" rel="external">CerberVT</a>
+        </p>
     </div>
 </Card>

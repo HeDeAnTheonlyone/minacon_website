@@ -35,11 +35,9 @@
 </style>
 
 <HeroBg/>
-
 <Card>
     <h1>Welcome to MinaCon</h1>
     <p>By Minawan, for Minawan — annual fan meetup celebrating CerberVT and the Minawan community.</p>
     <button onclick={() => gotoSection("Countdown")}>Next MinaCon</button>
 </Card>
-
 <ScrollHint/>

@@ -43,7 +43,6 @@ section {
         relative
         h-screen
         overflow-clip
-        place-items-center
     ;
 }
 

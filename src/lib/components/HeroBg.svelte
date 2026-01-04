@@ -7,41 +7,52 @@
     import six_img from "$lib/images/6.png";
     import screw from "$lib/images/screw.png";
 
-    let six: HTMLDivElement;
-    let ro: ResizeObserver;
-
-    const img_width: number = 192;
-    const img_height: number = 110;
-    const origin_x: number = 0.78;
-    const origin_y: number = 0.43;
-
+    
+    const native_six_width: number = 192;
+    const native_six_height: number = 110;
+    const origin_x: number = 0.705;
+    const origin_y: number = 0.38;
+    const native_cloud_width = 576;
+    let six_elem: HTMLElement;
+    
     function updateOrigin() {
-        if (!six) return;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
 
-        const rect = six.getBoundingClientRect();
+        const scale_x = vw / native_six_width;
+        const scale_y = vh / native_six_height;
+        const scaled_width = native_six_width * scale_x;
+        const scaled_height = native_six_height * scale_y;
 
-        const scale = Math.min(rect.width / img_width, rect.height / img_height);
-        const scaled_width = img_width * scale;
-        const scaled_height = img_height * scale;
-
-        const offset_x = (rect.width - scaled_width) / 2;
-        const offset_y = (rect.height - scaled_height) / 2;
+        const offset_x = (vw - scaled_width) / 2;
+        const offset_y = (vh - scaled_height) / 2;
 
         const ox = offset_x + scaled_width * origin_x;
         const oy = offset_y + scaled_height * origin_y;
 
-        six.style.transformOrigin = `${ox}px ${oy}px`;
+        six_elem.style.transformOrigin = `${ox}px ${oy}px`;
+    }
+
+    function updateClouds() {
+        const vw = window.innerWidth;
+
+        const scale = vw / native_cloud_width;
+        const travel = native_cloud_width * scale;
+
+        document.documentElement.style.setProperty('--cloud-travel', `${travel}px`);
     }
 
     onMount(() => {
-        ro = new ResizeObserver(updateOrigin);
-        ro.observe(six);
-
+        addEventListener("resize", updateClouds, {passive: true});
+        addEventListener("resize", updateOrigin, {passive: true});
+        
+        updateClouds();
         updateOrigin();
-    });
 
-    onDestroy(() => {
-        ro?.disconnect();
+        onDestroy(() => {
+            removeEventListener("resize", updateClouds);
+            removeEventListener("resize", updateOrigin);
+        });
     });
 </script>
 
@@ -62,29 +73,18 @@
     }
 
     @keyframes side-scroll {
-        0% {
-            transform:
-                translateX(0px)
-                scale(var(--cloud-scale))
-            ;
-        }
-
         100% {
             transform:
-                translateX(calc(var(--cloud-width) * var(--cloud-scale)))
-                scale(var(--cloud-scale))
+                translateX(var(--cloud-travel))
             ;
         }
     }
 
     .cloud {
-        --cloud-width: 576px;
-        --cloud-height: 324px;
-        --cloud-scale: max(calc( 115vh / var(--cloud-height)), 1);
         background-repeat: repeat-x;
         background-position: bottom center;
+        background-size: auto 115vh;
         transform-origin: bottom;
-        transform: scale(var(--cloud-width) * 1);
         @apply
             absolute
             bottom-0
@@ -110,16 +110,18 @@
 
     .title-anchor {
         @apply
+            relative
             size-full
+            grid
             place-items-center
         ;
     }
 
     .title {
-        transform: translateY(100px);
         @apply
+            absolute
             aspect-video
-            size-[80%]
+            size-[85%]
             bg-no-repeat
             bg-center
             bg-contain
@@ -143,8 +145,11 @@
     <div class="cloud cloud-3" style="background-image: url({cloud_3});"></div>
 </div>
 
-<div class="title-anchor">
-    <div class="title" style="background-image: url({title});"></div>
-    <div class="title sway" bind:this={six} style="background-image: url({six_img});"></div>
-    <div class="title static" style="background-image: url({screw});"></div>
+<div class="size-full absolute">
+    <div class="title-anchor">
+        <div class="title" style="background-image: url({title});"></div>
+        <div class="title sway" style="background-image: url({six_img});" bind:this={six_elem}></div>
+        <!-- <div class="title sway" style="background-image: url({six_img});"></div> -->
+        <div class="title static" style="background-image: url({screw});"></div>
+    </div>
 </div>

@@ -10,6 +10,7 @@
 
     .section {
         @apply
+            grid
             size-full
             px-5
             justify-items-center
@@ -21,6 +22,7 @@
     .card {
         box-shadow: var(--shadow-glass);
         @apply
+            grid
             justify-items-center
             relative
             z-3
