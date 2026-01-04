@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from "./Card.svelte";
-
+    import bg from "$lib/images/cerber_bg.png";
 </script>
 
 <style>
@@ -11,8 +11,18 @@
             p-7
         ;
     }
+
+    .bg {
+        @apply
+            absolute
+            size-full
+            bg-contain
+            bg-center
+        ;
+    }
 </style>
 
+<div class="bg" style="background-image: url({bg});"></div>
 <Card>
     <h2>About CerberVT</h2>
     <div class="text-container">
@@ -24,8 +34,13 @@
             off. Her community is called <strong>Minawan</strong> (wordplay from "mina-san", "everyone" in Japanese).
         </p>
     </div>
-    <p>
-        More info: <a href="https://virtualyoutuber.fandom.com/wiki/CerberVT" target="_blank" rel="noopener">CerberVT
-        Wiki</a> · <a href="https://www.twitch.tv/cerbervt" target="_blank" rel="noopener">Twitch Channel</a>
-    </p>
+    <div class="flex">
+            <p>
+                More info:
+                <a href="https://virtualyoutuber.fandom.com/wiki/CerberVT" target="_blank" rel="external">CerberVT</a>
+                <span class="mx-3">|</span>
+                Wiki:
+                <a href="https://www.twitch.tv/cerbervt" target="_blank" rel="external">Twitch Channel</a>
+            </p>
+    </div>
 </Card>

@@ -1,6 +1,6 @@
 <script lang='ts'>
     import NavLogo from './NavLogo.svelte';
-    import { gotoSection} from '$lib/util/smooth_snap_scroll';
+    import { index, gotoSection } from '$lib/util/smooth_snap_scroll';
     import { Sections } from '$lib/data/sections';
 </script>
 
@@ -8,7 +8,6 @@
     @reference '../../styles/app.css';
 
     header {
-        box-shadow: var(--shadow-glass);
         @apply
             sticky
             top-0
@@ -24,6 +23,7 @@
             items-center
             justify-between
             backdrop-blur-sm
+            shadow-glass
         ;
     }
     
@@ -61,18 +61,29 @@
             bg-[#ffffff88]
         ;
     }
+
+    .underlining {
+        @apply
+            underline
+            decoration-2
+            scale-105
+        ;
+    }
 </style>
 
-<!-- <div class="w-full flex"> -->
 <header>
     <NavLogo/>
     <nav>
-        {#each Sections as button, index}
-            {#if index != 0}
+        {#each Sections as button, i}
+            {#if i != 0}
                 <span>|</span>
             {/if}
-            <button onclick={() => gotoSection(index)}>{button}</button>
+            <button
+                class="{$index == i ? 'underlining' : ''}"
+                onclick={() => gotoSection(i)}
+            >
+                {button}
+            </button>
         {/each}
     </nav>
 </header>
-<!-- </div> -->

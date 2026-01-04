@@ -122,7 +122,7 @@
             <div class="arrow-bubble-grid">
                 <button
                     aria-label="button left"
-                    onclick={() => {startRotateSequence(-1)}}
+                    onclick={() => {startRotateSequence(1)}}
                 >
                     <svg
                         width="50"
@@ -141,7 +141,7 @@
                 <SpeechBubble elem={testimonies[index]}/>
                 <button
                     aria-label="button left"
-                    onclick={() => {startRotateSequence(1)}}
+                    onclick={() => {startRotateSequence(-1)}}
                 >
                     <svg
                         width="50"

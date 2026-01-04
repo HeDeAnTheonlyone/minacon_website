@@ -60,6 +60,13 @@ h3 {
     font-weight: 700;
 }
 
-p {
+p, a {
     font-size: clamp(14px, 2.1vw, 18px);
+}
+
+a {
+    @apply
+        underline
+        text-purple-800
+    ;
 }

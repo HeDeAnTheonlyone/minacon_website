@@ -29,13 +29,12 @@
     <div class="contact">
         <div class="flex gap-8">
             <div>
-                <div class="meta">Discord:</div>
-                <div class="meta">Email:</div>
+                <p class="meta">Discord:</p>
+                <p class="meta">Email:</p>
             </div>
             <div>
-                <span class="muted">samsa1337</span>
-                <br>
-                <a class="underline" href="mailto:minacon@minawan.dog">minacon@minawan.dog</a>
+                <p class="muted">samsa1337</p>
+                <a href="mailto:minacon@minawan.dog">minacon@minawan.dog</a>
             </div>
         </div>
     </div>

@@ -1,13 +1,14 @@
 import { Sections } from "$lib/data/sections";
+import { get, writable, type Writable } from "svelte/store";
 
 let last_index: number;
 let locked: boolean = false;
 let container: HTMLElement;
 
-let index: number = 0;
+export const index: Writable<number> = writable(0);
 function setIndex(i: number) {
-    index = i;
-    sessionStorage.setItem("index", index.toString());
+    index.set(i);
+    sessionStorage.setItem("index", get(index).toString());
 }
 
 function initSmoothSnapScrolling() {
@@ -18,9 +19,9 @@ function initSmoothSnapScrolling() {
     if (i === null) {
         sessionStorage.setItem("index", index.toString());
     }
-    else index = parseInt(i);
+    else index.set(parseInt(i));
 
-    gotoSection(index);
+    gotoSection(get(index));
 
     addEventListener("wheel", onScroll, { passive: true });
     addEventListener("keydown", onKeyDown, { passive: true });
@@ -44,28 +45,47 @@ function allowScroll(e: WheelEvent | KeyboardEvent): boolean {
     else return true
 }
 
+/**
+ * Scroll wheel navigation
+ */
 function onScroll(e: WheelEvent) {
     if (!allowScroll(e)) return;
 
-    index += Math.sign(e.deltaY);
-    setIndex(Math.max(0, Math.min(index, last_index)));
-    gotoSection(index);    
+    gotoSection(
+        Math.max(
+            0,
+            Math.min(
+                get(index) + Math.sign(e.deltaY),
+                last_index
+            )
+        )
+    );
 }
 
+/**
+ * Arrow key navigation
+ */
 function onKeyDown(e: KeyboardEvent) {
     if (!allowScroll(e)) return;
 
     switch(e.code) {
         case 'ArrowUp':
-            index -= 1;
+            index.update(i => i - 1);
             break;
         case 'ArrowDown':
-            index += 1;
+            index.update(i => i + 1);
             break;
     }
 
-    setIndex(Math.max(0, Math.min(index, last_index)));
-    gotoSection(index);
+    gotoSection(
+        Math.max(
+            0,
+            Math.min(
+                get(index),
+                last_index
+            )
+        )
+    );
 }
 
 /**
@@ -87,13 +107,16 @@ function gotoSection(section: number | string) {
         }
     }
 
-    if (index != i) setIndex(i);
+    if (get(index) != i) setIndex(i);
 
-    container.style.setProperty('--section-index', index.toString());
+    container.style.setProperty('--section-index', i.toString());
 }
 
-function correctSectionIndex(node: HTMLElement, index: number) {
-    const handler = () => gotoSection(index);
+/**
+ * Correction function to move the screen to the position of the focused element to prevent out of view focus.
+ */
+function correctSectionIndex(node: HTMLElement, i: number) {
+    const handler = () => gotoSection(i);
     node.addEventListener("focusin", handler, { passive: true });
 
     return {

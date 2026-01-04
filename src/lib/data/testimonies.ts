@@ -40,7 +40,7 @@ export const testimonies = [
     },
     {
         name: "HeDeWan",
-        text: "It the best event I was ever part of and I met so many awesome people. I'll be there next time as well, 100%.",
+        text: "It's the best event I was ever part of. I met so many awesome people. I'll be there next time as well, 100%.",
         img: hedewan
     }
 ] as const satisfies readonly Testimony[];
