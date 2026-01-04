@@ -1,8 +1,4 @@
-
-type Vector2 = {
-        x: number,
-        y: number
-    }
+import type { Vector2 } from "$lib/types";
 
 const VecMath = {
     length(v: Vector2): number {

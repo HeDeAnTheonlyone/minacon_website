@@ -14,7 +14,7 @@
             px-5
             justify-items-center
             content-center
-            z-1
+            z-5
         ;
     }
 
@@ -35,7 +35,6 @@
             border-b-2
         ;
     }
-
 </style>
 
 <div class="section">

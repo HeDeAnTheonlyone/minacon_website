@@ -24,7 +24,7 @@ html, body {
     font-family: 'Nunito', system-ui, sans-serif;
     @apply
         h-screen
-        overflow-hidden
+        overflow-clip               
         scroll-smooth
         border-b-gray-400
         text-text
@@ -51,7 +51,7 @@ h2 {
     @apply
         mb-2.5
         w-max
-        text-[22px]
+        text-[25px]
         font-bold
     ;
 }

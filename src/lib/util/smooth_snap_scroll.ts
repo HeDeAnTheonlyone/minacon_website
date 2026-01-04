@@ -1,3 +1,4 @@
+import { Sections } from "$lib/data/sections";
 
 let last_index: number;
 let locked: boolean = false;
@@ -8,16 +9,6 @@ function setIndex(i: number) {
     index = i;
     sessionStorage.setItem("index", index.toString());
 }
-
-export const Sections: string[] = [
-    'Welcome',
-    'Countdown',
-    'About MinaCon',
-    'About Cerber',
-    'Testimonies',
-    'Gallery',
-    'Contact'
-];
 
 function initSmoothSnapScrolling() {
     last_index = document.querySelectorAll(".smooth-scroll-snap > section").length - 1;
@@ -33,6 +24,13 @@ function initSmoothSnapScrolling() {
 
     addEventListener("wheel", onScroll, { passive: true });
     addEventListener("keydown", onKeyDown, { passive: true });
+
+    return {
+        destroy() {
+            removeEventListener("wheel", onScroll);
+            removeEventListener("keydown", onKeyDown);
+        }
+    }
 };
 
 function allowScroll(e: WheelEvent | KeyboardEvent): boolean {
@@ -70,7 +68,9 @@ function onKeyDown(e: KeyboardEvent) {
     gotoSection(index);
 }
 
-// Use section index or name 
+/**
+ * Use section index or name
+ */ 
 function gotoSection(section: number | string) {
     locked = true;
     setTimeout(() => locked = false, 300);
@@ -92,4 +92,15 @@ function gotoSection(section: number | string) {
     container.style.setProperty('--section-index', index.toString());
 }
 
-export { initSmoothSnapScrolling, gotoSection}
+function correctSectionIndex(node: HTMLElement, index: number) {
+    const handler = () => gotoSection(index);
+    node.addEventListener("focusin", handler, { passive: true });
+
+    return {
+        destroy() {
+            node.removeEventListener("focusin", handler);
+        }
+    };
+}
+
+export { initSmoothSnapScrolling, gotoSection, correctSectionIndex}

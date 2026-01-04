@@ -1,6 +1,7 @@
 <script lang='ts'>
     import NavLogo from './NavLogo.svelte';
-    import { gotoSection, Sections } from '$lib/smooth_snap_scroll';
+    import { gotoSection} from '$lib/util/smooth_snap_scroll';
+    import { Sections } from '$lib/data/sections';
 </script>
 
 <style>
@@ -23,7 +24,6 @@
             items-center
             justify-between
             backdrop-blur-sm
-            /* bg-glass */
         ;
     }
     

@@ -1,5 +1,11 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte";
+    import cloud_1 from "$lib/images/cloud_1.png";
+    import cloud_2 from "$lib/images/cloud_2.png";
+    import cloud_3 from "$lib/images/cloud_3.png";
+    import title from "$lib/images/title.png";
+    import six_img from "$lib/images/6.png";
+    import screw from "$lib/images/screw.png";
 
     let six: HTMLDivElement;
     let ro: ResizeObserver;
@@ -23,8 +29,6 @@
 
         const ox = offset_x + scaled_width * origin_x;
         const oy = offset_y + scaled_height * origin_y;
-
-        // console.log(`scale: ${scale}\nox: ${ox}\noy: ${oy}\ncw: ${rect.width}\nch: ${rect.height}\noff x: ${offset_x}\noff y: ${offset_y}`);
 
         six.style.transformOrigin = `${ox}px ${oy}px`;
     }
@@ -92,18 +96,15 @@
 
     .cloud-1 {
         z-index: -3;
-        background-image: url('cloud_1.png');
         animation: side-scroll 150s linear infinite;
     } 
     .cloud-2 {
         z-index: -2;
-        background-image: url('cloud_2.png');
         animation: side-scroll 90s linear infinite;
     }
 
     .cloud-3 {
         z-index: -1;
-        background-image: url('cloud_3.png');
         animation: side-scroll 50s linear infinite;
     }
 
@@ -137,13 +138,13 @@
 </style>
 
 <div class="sky">
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-1" style="background-image: url({cloud_1});"></div>
+    <div class="cloud cloud-2" style="background-image: url({cloud_2});"></div>
+    <div class="cloud cloud-3" style="background-image: url({cloud_3});"></div>
 </div>
 
 <div class="title-anchor">
-    <div class="title" style="background-image: url('title.png');"></div>
-    <div class="title sway" bind:this={six} style="background-image: url('6.png');"></div>
-    <div class="title static" style="background-image: url('screw.png');"></div>
+    <div class="title" style="background-image: url({title});"></div>
+    <div class="title sway" bind:this={six} style="background-image: url({six_img});"></div>
+    <div class="title static" style="background-image: url({screw});"></div>
 </div>

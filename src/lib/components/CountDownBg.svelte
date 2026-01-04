@@ -1,6 +1,6 @@
-<!-- <script lang="ts">
-
-</script> -->
+<script lang="ts">
+    import pendulum from "$lib/images/pendulum.png";
+</script>
 
 <style>
     @reference '../../styles/app.css';
@@ -12,13 +12,6 @@
 
     .wall {
         background: linear-gradient(90deg, #4b2417, #69311f, #69311f, #69311f, #4b2417);
-        @apply
-            size-full
-        ;
-    }
-
-    .frame {
-        background-image: url('gold_frame.webp');
         @apply
             size-full
         ;
@@ -49,7 +42,6 @@
     }
     
     .pendulum {
-        background-image: url('pendulum.png');
         background-size: contain;
         transform-origin: bottom center;
         @apply
@@ -67,5 +59,5 @@
 <div class="wall"></div>
 <!-- <PocketWatch/> -->
 <div class="pendulum-swing">
-    <div class="pendulum"></div>
+    <div class="pendulum" style="background-image: url({pendulum});"></div>
 </div>

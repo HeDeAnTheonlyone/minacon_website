@@ -1,10 +1,14 @@
 <script lang="ts">
+    import type { Vector2 } from "$lib/types";
+    import { VecMath } from "$lib/util/vector";
 	import { onMount } from "svelte";
-    import { type Vector2, VecMath } from "$lib/vector";
+    import idle from "$lib/images/mina_idle.gif";
+    import walk from "$lib/images/mina_walk.gif";
+    import wan_img from "$lib/images/wan.png";
     
     const center_offset: number = 100;
     const speed: number = 25;
-    const stop_distance: number = 75;
+    const stop_distance: number = 130;
     
     let minawan: HTMLElement;
     let wanTxt: HTMLElement;
@@ -25,7 +29,9 @@
             pos = VecMath.add(pos, motion);
 
             minawan.style.translate = `${pos.x - center_offset}px ${pos.y - center_offset}px`;
+            minawan.style.backgroundImage = `url(${walk})`;
         }
+        else minawan.style.backgroundImage = `url(${idle})`;
     }
 
     function updateTargetPos(e: MouseEvent) {
@@ -47,15 +53,22 @@
 
     onMount(() => {
         addEventListener("mousemove", updateTargetPos, {passive: true});
-        addEventListener("mouseout", () => { target = pos; }, {passive: true});
+        addEventListener("mouseout", () => target = pos, {passive: true});
         
         pos = target = {
             x: window.innerWidth / 2,
-            y: 300
+            y: 200
         };
 
         minawan.style.translate = `${pos.x - center_offset}px ${pos.y - center_offset}px`;
         setInterval(updateMinawanPos, 100);
+
+        return {
+            destroy () {
+                removeEventListener("mousemove", updateTargetPos);
+                removeEventListener("mouseout", () => target = pos);
+            }
+        }
     });
 </script>
 
@@ -75,20 +88,11 @@
         ;
     }
 
-    .walk {
-        background-image: url('mina_walk.gif');
-    }
-
-    .idle {
-        background-image: url('mina_idle.gif');
-    }
-
     .flip {
         transform: scaleX(-1);
     }
 
     .wan {
-        background-image: url('wan.png');
         @apply
             absolute
             size-20
@@ -125,7 +129,7 @@
 </style>
 
 <button
-    class="minawan {len > stop_distance ? 'walk' : 'idle'} {flip ? 'flip' : ''}"
+    class="minawan {flip ? 'flip' : ''}"
     bind:this={minawan}
     onclick={wan}
     aria-label="Background Minawan following the cursor"
@@ -133,5 +137,6 @@
 
 <div
     class="wan {wanning ? 'fade' : ''}"
+    style="background-image: url({wan_img});"
     bind:this={wanTxt}
 ></div>

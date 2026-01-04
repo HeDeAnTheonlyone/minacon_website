@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+    import pocket_watch from "$lib/images/pocket_watch.png";
+    import minute_hand from "$lib/images/minute_hand.png";
+    import hour_hand from "$lib/images/hour_hand.png";
 
     let minutes: HTMLElement;
     let hours: HTMLElement;
@@ -59,7 +62,7 @@
 </style>
 
 <div class=" w-full">
-    <div class="watch" style="background-image: url('pocket_watch.png')"></div>
-    <div class="watch minutes" bind:this={minutes} style="background-image: url('minute_hand.png')"></div>
-    <div class="watch hours" bind:this={hours} style="background-image: url('hour_hand.png')"></div>
+    <div class="watch" style="background-image: url({pocket_watch})"></div>
+    <div class="watch minutes" bind:this={minutes} style="background-image: url({minute_hand})"></div>
+    <div class="watch hours" bind:this={hours} style="background-image: url({hour_hand})"></div>
 </div>

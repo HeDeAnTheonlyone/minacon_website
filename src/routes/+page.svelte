@@ -7,7 +7,7 @@
 	import Gallery from "$lib/components/Gallery.svelte";
 	import Contact from "$lib/components/Contact.svelte";
 	import { onMount, type Component } from "svelte";
-    import { initSmoothSnapScrolling } from "$lib/smooth_snap_scroll";
+    import { initSmoothSnapScrolling, correctSectionIndex } from "$lib/util/smooth_snap_scroll";
 
     const Sections: Component[] = [
         Hero,
@@ -18,7 +18,7 @@
         Gallery,
         Contact
     ];
-
+        
     onMount(() => initSmoothSnapScrolling());
 </script>
 
@@ -33,9 +33,9 @@
 <!-- ================================ -->
 
 <main class="smooth-scroll-snap">
-    {#each Sections as section}
-        <section>
-            <svelte:component this={section}/>
+    {#each Sections as Section, i}
+        <section use:correctSectionIndex={i}>
+            <Section/>
         </section>
     {/each}
 </main>

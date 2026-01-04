@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Minawan from "./Minawan.svelte";
+    import map from "$lib/images/pixel_world_map.png";
 </script>
 
 <style>
     @reference '../../styles/app.css';
     .map {
-        background-image: url('pixel_world_map.png');
         image-rendering: pixelated;
         background-position: 50% -200px;
         @apply
@@ -25,8 +25,7 @@
     }
 </style>
 
-<div class="map"></div>
-
+<div class="map" style="background-image: url({map})"></div>
 <div class="minawan-playground">
     <Minawan/>
 </div>
