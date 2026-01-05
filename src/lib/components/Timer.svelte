@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { countdown_target } from '$lib';
 	import TimerElement from './TimerElement.svelte';
+
+    const countdown_target: Date = new Date(2026, 6, 27, 12, 0, 0);
 
     let countdown = $state({
         days: "0",

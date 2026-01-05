@@ -108,7 +108,6 @@
 
     .selection-arrow {      
         @apply
-            place-self-center
             duration-200
             hover:scale-120
         ;
@@ -123,6 +122,7 @@
                 <button
                     aria-label="button left"
                     onclick={() => {startRotateSequence(1)}}
+                    class="place-self-center"
                 >
                     <svg
                         width="50"
@@ -142,6 +142,7 @@
                 <button
                     aria-label="button left"
                     onclick={() => {startRotateSequence(-1)}}
+                    class="place-self-center"
                 >
                     <svg
                         width="50"

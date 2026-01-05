@@ -1,44 +1,86 @@
+<script lang="ts">
+    const photoModules = import.meta.glob('/src/lib/images/photos/*.{png,jpg,webp}', { eager: true });
+    const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
+    const photos = [...temp_photos, ...temp_photos]
+</script>
+
 <style>
     @reference "../../styles/app.css";
 
-    .gallery {
-        display: grid;
-        gap: 12px;
-    }
-
-    .placeholder {
-        aspect-ratio: 16/10;
-        background: linear-gradient(135deg, var(--color-lavender), var(--color-pastel-pink));
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 700;
-    }
-
-    .cols-3 {
-        display: grid;
-        gap: 20px;
-        align-items: center;
+    .bg {
+        background: linear-gradient(#51157c, #8715d8, #51157c);
         @apply
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-3
+            absolute
+            size-full
+        ;
+    }
+
+    .headline {
+        @apply
+            relative
+            pt-30
+            w-full
+            h-1/6
+            text-center
+        ;
+    }
+
+    .image-row {
+        @apply
+            flex
+            h-2/5
+            w-max
+            py-5
+            gap-10
+            overflow-x-visible
+        ;
+    }
+
+    @keyframes anim-left {
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    @keyframes anim-right {
+        0% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .anim-left {
+        animation: 150s linear infinite anim-left
+    }
+
+    .anim-right {
+        @apply
+            flex-row-reverse
+        ;
+        animation: 150s linear infinite anim-right
+    }
+
+
+    .photo {
+        @apply
+            h-full
+            w-auto
+            rounded-xl
+            border-10
         ;
     }
 </style>
 
-<div>
-    <h2>Gallery</h2>
-    <div class="gallery cols-3" id="galleryGrid">
-        <!-- TODO add a way to only show 3 images but have them all lined up to scroll through -->
-        <div class="placeholder">Coming Soon</div>
-        <div class="placeholder">Coming Soon</div>
-        <div class="placeholder">Coming Soon</div>
+<div class="absolute size-full">
+    <div class="bg"></div>
+    <h2 class="headline">Gallery</h2>
+    <div class="image-row anim-left">
+        {#each photos as photo}
+            <img class="photo" src="{photo}" alt=""/>
+        {/each}
     </div>
-    <div style="margin-top:12px;color:var(--color-muted);font-size:13px">Tip: Replace the placeholders by adding
-        &lt;img&gt; tags inside <code>#galleryGrid</code> or replace a placeholder's background-image via inline
-        style.
+    <div class="image-row anim-right">
+        {#each photos as photo}
+            <img class="photo" src="{photo}" alt=""/>
+        {/each}
     </div>
 </div>
