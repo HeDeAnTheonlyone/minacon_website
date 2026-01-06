@@ -6,6 +6,6 @@ const photo_url = "https://codeberg.org/HeDeAn/MinaCon_Web/raw/branch/main/src/l
 const photos_dir= path.resolve('src/lib/images/photos');
 const files = fs.readdirSync(photos_dir); 
 const photos = files.map(f => `${photo_url}${f}`);
-const url_list = JSON.stringify(photos);
+const url_list = JSON.stringify(photos.concat(photos));
 
 fs.writeFileSync(path.resolve('src/lib/data/photo_list.json'), url_list);
