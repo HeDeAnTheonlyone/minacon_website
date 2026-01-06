@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Card from "./Card.svelte";
-    import bg from "$lib/images/cerber_bg.png";
 </script>
 
 <style>
@@ -22,7 +21,7 @@
     }
 </style>
 
-<div class="bg" style="background-image: url({bg});"></div>
+<div class="bg" style="background-image: url('https://codeberg.org/HeDeAn/MinaCon_Web/raw/branch/main/src/lib/images/cerber_bg.webp');"></div>
 <Card>
     <h2>About CerberVT</h2>
     <div class="text-container">

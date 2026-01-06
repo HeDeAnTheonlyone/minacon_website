@@ -1,5 +1,5 @@
 <script lang="ts">
-    import pendulum from "$lib/images/pendulum.png";
+    import pendulum from "$lib/images/pendulum.webp";
 </script>
 
 <style>

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onDestroy, onMount } from "svelte";
-    import cloud_1 from "$lib/images/cloud_1.png";
-    import cloud_2 from "$lib/images/cloud_2.png";
-    import cloud_3 from "$lib/images/cloud_3.png";
-    import title from "$lib/images/title.png";
-    import six_img from "$lib/images/6.png";
-    import screw from "$lib/images/screw.png";
+    import cloud_1 from "$lib/images/cloud_1.webp";
+    import cloud_2 from "$lib/images/cloud_2.webp";
+    import cloud_3 from "$lib/images/cloud_3.webp";
+    import title from "$lib/images/title.webp";
+    import six_img from "$lib/images/6.webp";
+    import screw from "$lib/images/screw.webp";
 
     
     const native_six_width: number = 192;

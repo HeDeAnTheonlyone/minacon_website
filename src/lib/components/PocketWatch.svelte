@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-    import pocket_watch from "$lib/images/pocket_watch.png";
-    import minute_hand from "$lib/images/minute_hand.png";
-    import hour_hand from "$lib/images/hour_hand.png";
+    import pocket_watch from "$lib/images/pocket_watch.webp";
+    import minute_hand from "$lib/images/minute_hand.webp";
+    import hour_hand from "$lib/images/hour_hand.webp";
 
     let minutes: HTMLElement;
     let hours: HTMLElement;

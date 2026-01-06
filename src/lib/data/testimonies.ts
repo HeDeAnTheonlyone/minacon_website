@@ -1,11 +1,11 @@
 import type { Testimony } from "$lib/types";
-import kirarawan from "$lib/images/minasonas/kirarawan.png";
-import simchuckywan from "$lib/images/minasonas/simchuckywan.png";
-import samsawan from "$lib/images/minasonas/samsawan.png";
-import miyawan from "$lib/images/minasonas/miyawan.png";
-import schneewan from "$lib/images/minasonas/schneewan.png";
-import vulgariswan from "$lib/images/minasonas/vulgariswan.png";
-import hedewan from "$lib/images/minasonas/hedewan.png";
+import kirarawan from "$lib/images/minasonas/kirarawan.webp";
+import simchuckywan from "$lib/images/minasonas/simchuckywan.webp";
+import samsawan from "$lib/images/minasonas/samsawan.webp";
+import miyawan from "$lib/images/minasonas/miyawan.webp";
+import schneewan from "$lib/images/minasonas/schneewan.webp";
+import vulgariswan from "$lib/images/minasonas/vulgariswan.webp";
+import hedewan from "$lib/images/minasonas/hedewan.webp";
 
 export const testimonies = [
     {

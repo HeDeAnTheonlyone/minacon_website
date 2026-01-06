@@ -4,7 +4,7 @@
 	import { onMount } from "svelte";
     import idle from "$lib/images/mina_idle.gif";
     import walk from "$lib/images/mina_walk.gif";
-    import wan_img from "$lib/images/wan.png";
+    import wan_img from "$lib/images/wan.webp";
     
     const center_offset: number = 100;
     const speed: number = 25;

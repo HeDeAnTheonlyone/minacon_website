@@ -1,5 +1,5 @@
 <script lang="ts">
-    const photoModules = import.meta.glob('/src/lib/images/photos/*.{png,jpg,webp}', { eager: true });
+    const photoModules = import.meta.glob('/src/lib/images/photos/*.webp', { eager: true });
     const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
     const photos = [...temp_photos, ...temp_photos]
 </script>
@@ -65,7 +65,7 @@
             h-full
             w-auto
             rounded-xl
-            border-10
+            border-6
         ;
     }
 </style>
@@ -75,12 +75,12 @@
     <h2 class="headline">Gallery</h2>
     <div class="image-row anim-left">
         {#each photos as photo}
-            <img class="photo" src="{photo}" alt=""/>
+            <img loading="lazy" class="photo" src="{photo}" alt=""/>
         {/each}
     </div>
     <div class="image-row anim-right">
         {#each photos as photo}
-            <img class="photo" src="{photo}" alt=""/>
+            <img loading="lazy" class="photo" src="{photo}" alt=""/>
         {/each}
     </div>
 </div>

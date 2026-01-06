@@ -33,7 +33,7 @@
                 <p class="meta">Email:</p>
             </div>
             <div>
-                <p class="muted">samsa1337</p>
+                <p class="muted">samsa1337, imdasmiya</p>
                 <a href="mailto:minacon@minawan.dog">minacon@minawan.dog</a>
             </div>
         </div>

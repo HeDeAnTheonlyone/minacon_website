@@ -1,10 +1,10 @@
 <script lang="ts">
-    import envelope_bg from "$lib/images/envelope_bg.png";
-    import envelope_overlay from "$lib/images/envelope_overlay.png";
-    import envelope_flap_up from "$lib/images/envelope_flap_up.png";
-    import envelope_flap_down from "$lib/images/envelope_flap_down.png";
-    import letter from "$lib/images/letter.png";
-    import paper_plane from "$lib/images/paper_plane.png";
+    import envelope_bg from "$lib/images/envelope_bg.webp";
+    import envelope_overlay from "$lib/images/envelope_overlay.webp";
+    import envelope_flap_up from "$lib/images/envelope_flap_up.webp";
+    import envelope_flap_down from "$lib/images/envelope_flap_down.webp";
+    import letter from "$lib/images/letter.webp";
+    import paper_plane from "$lib/images/paper_plane.webp";
 </script>
 
 <style>

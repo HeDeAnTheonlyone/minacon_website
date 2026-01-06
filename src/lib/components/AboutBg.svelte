@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Minawan from "./Minawan.svelte";
-    import map from "$lib/images/pixel_world_map.png";
 </script>
 
 <style>
@@ -25,7 +24,7 @@
     }
 </style>
 
-<div class="map" style="background-image: url({map})"></div>
+<div class="map" style="background-image: url('https://codeberg.org/HeDeAn/MinaCon_Web/src/commit/62ac0832adfe4ade2a5a95d34bd8d05a744868eb/src/lib/images/pixel_world_map.webp')"></div>
 <div class="minawan-playground">
     <Minawan/>
 </div>
