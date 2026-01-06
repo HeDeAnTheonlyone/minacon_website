@@ -1,7 +1,10 @@
 <script lang="ts">
-    const photoModules = import.meta.glob('/src/lib/images/photos/*.webp', { eager: true });
-    const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
-    const photos = [...temp_photos, ...temp_photos]
+    import photos from "$lib/data/photo_list.json";
+
+    // const photoModules = import.meta.glob('/src/lib/images/photos/*.webp', { eager: true });
+    // const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
+    // const photos = [...temp_photos, ...temp_photos]
+
 </script>
 
 <style>
@@ -75,12 +78,12 @@
     <h2 class="headline">Gallery</h2>
     <div class="image-row anim-left">
         {#each photos as photo}
-            <img loading="lazy" class="photo" src="{photo}" alt=""/>
+            <img class="photo" src="{photo}" alt=""/>
         {/each}
     </div>
     <div class="image-row anim-right">
         {#each photos as photo}
-            <img loading="lazy" class="photo" src="{photo}" alt=""/>
+            <img class="photo" src="{photo}" alt=""/>
         {/each}
     </div>
 </div>
