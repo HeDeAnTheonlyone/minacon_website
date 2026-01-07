@@ -1,9 +1,9 @@
 <script lang="ts">
-    import photos from "$lib/data/photo_list.json";
+    // import photos from "$lib/data/photo_list.json";
 
-    // const photoModules = import.meta.glob('/src/lib/images/photos/*.webp', { eager: true });
-    // const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
-    // const photos = [...temp_photos, ...temp_photos]
+    const photoModules = import.meta.glob('/src/lib/images/photos/*.webp', { eager: true });
+    const temp_photos: string[] = Object.values(photoModules).map((mod: any) => mod.default);
+    const photos = [...temp_photos, ...temp_photos]
 
 </script>
 
@@ -35,7 +35,7 @@
             w-max
             py-5
             gap-10
-            overflow-x-visible
+            overflow-x-hidden
         ;
     }
 
@@ -77,7 +77,7 @@
     <div class="bg"></div>
     <h2 class="headline">Gallery</h2>
     <div class="image-row anim-left">
-        {#each photos as photo}
+        {#each photos as photo, i}
             <img class="photo" src="{photo}" alt=""/>
         {/each}
     </div>
